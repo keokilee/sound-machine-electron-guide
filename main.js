@@ -2,6 +2,7 @@
 
 var app = require('app');
 var BrowserWindow = require('browser-window');
+var ipc = require('ipc');
 
 var mainWindow = null;
 
@@ -14,4 +15,8 @@ app.on('ready', function() {
     });
 
     mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
+});
+
+ipc.on('close-main-window', function() {
+  app.quit();
 });

@@ -1,12 +1,19 @@
 // Add your index.js code in this file
 'use strict';
 
+var ipc = require('ipc');
+
 var soundButtons = document.querySelectorAll('.button-sound');
 var forEach = Array.prototype.forEach;
 
 forEach.call(soundButtons, function (button) {
   var name = button.attributes['data-sound'].value;
   prepareButton(button, name);
+});
+
+var closeEl = document.querySelector('.close');
+closeEl.addEventListener('click', function() {
+  ipc.send('close-main-window');
 });
 
 function prepareButton(buttonEl, soundName) {
