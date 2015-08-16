@@ -16,6 +16,11 @@ closeEl.addEventListener('click', function() {
   ipc.send('close-main-window');
 });
 
+ipc.on('global-shortcut', function (arg) {
+  var event = new MouseEvent('click');
+  soundButtons[arg].dispatchEvent(event);
+});
+
 function prepareButton(buttonEl, soundName) {
   var url = 'url("img/icons/' + soundName + '.png")';
   var audio = new Audio(__dirname + '/wav/' + soundName + '.wav');
