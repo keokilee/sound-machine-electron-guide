@@ -21,6 +21,11 @@ ipc.on('global-shortcut', function (arg) {
   soundButtons[arg].dispatchEvent(event);
 });
 
+var settingsEl = document.querySelector('.settings');
+settingsEl.addEventListener('click', function() {
+  ipc.send('open-settings-window');
+});
+
 function prepareButton(buttonEl, soundName) {
   var url = 'url("img/icons/' + soundName + '.png")';
   var audio = new Audio(__dirname + '/wav/' + soundName + '.wav');
