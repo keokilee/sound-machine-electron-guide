@@ -23,3 +23,8 @@ function getUserHome() {
 
   return process.env[home];
 }
+
+module.exports = {
+  saveSettings: saveSettings,
+  readSettings: readSettings
+};

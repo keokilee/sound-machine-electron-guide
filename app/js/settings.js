@@ -6,7 +6,7 @@ var config = require('../configuration.js');
 var checkboxes = document.querySelectorAll('.global-shortcut');
 
 Array.prototype.forEach.call(checkboxes, function (checkbox) {
-  var keys = configuration.readSettings('shortcutKeys');
+  var keys = config.readSettings('shortcutKeys');
   var modifier = checkbox.attributes['data-modifier-key'].value;
   checkbox.checked = keys.indexOf(modifier) !== '-1';
 
@@ -21,7 +21,7 @@ closeEl.addEventListener('click', function () {
 });
 
 function bindCheckboxes(e) {
-  var keys = configuration.readSettings('shortcutKeys');
+  var keys = config.readSettings('shortcutKeys');
   var modifier = e.target.attributes['data-modifier-key'].value;
 
   if (keys.indexOf(modifier) !== -1) {
